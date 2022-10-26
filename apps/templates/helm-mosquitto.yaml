@@ -12,13 +12,13 @@ spec:
   project: default
   source:
     repoURL: https://toanju.github.io/helm-charts/
-    targetRevision: 0.1.0
+    targetRevision: 0.1.1
     chart: mosquitto
 
     helm:
       values: |
         mosquitto:
-          config:
+          config: |
             per_listener_settings true
             listener 1883
             socket_domain ipv4
