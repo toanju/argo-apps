@@ -28,6 +28,8 @@ spec:
               port: "/dev/ttyUSB0"
             frontend:
               port: 80
+            mqtt:
+              server: "mqtt://mosquitto.mosquitto:1883"
           env:
             - name: TZ
               value: "Europe/Berlin"
