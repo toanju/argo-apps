@@ -1,0 +1,12 @@
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+apiVersion: v1
+data:
+  resource.exclusions: |
+    - apiGroups:
+        - cilium.io
+      kinds:
+        - CiliumIdentity
+      clusters:
+        - "*"
