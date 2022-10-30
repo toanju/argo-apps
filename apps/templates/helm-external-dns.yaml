@@ -17,6 +17,7 @@ spec:
 
     helm:
       values: |
+        policy: sync
         provider: coredns
         sources:
           - service
