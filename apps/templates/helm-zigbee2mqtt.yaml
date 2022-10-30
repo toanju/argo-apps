@@ -12,11 +12,16 @@ spec:
   project: default
   source:
     repoURL: https://toanju.github.io/helm-charts/
-    targetRevision: 0.1.3
+    targetRevision: 0.1.4
     chart: zigbee2mqtt
 
     helm:
       values: |
+        service:
+          type: LoadBalancer
+          annotations:
+            metallb.universe.tf/address-pool: lan
+            external-dns.alpha.kubernetes.io/hostname: zigbee2mqtt.lan.
         securityContext:
           runAsUser: 0
           privileged: true
