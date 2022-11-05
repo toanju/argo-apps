@@ -29,12 +29,17 @@ spec:
           role: zigbee
         zigbee2mqtt:
           config:
-            serial:
-              port: "/dev/ttyUSB0"
+            devices:
+              "0x00158d0001de09ff":
+                friendly_name: "0x00158d0001de09ff"
+              "0x00158d0001de0a02":
+                friendly_name: "0x00158d0001de0a02"
             frontend:
               port: 80
             mqtt:
               server: "mqtt://mosquitto.mosquitto:1883"
+            serial:
+              port: "/dev/ttyUSB0"
           env:
             - name: TZ
               value: "Europe/Berlin"
