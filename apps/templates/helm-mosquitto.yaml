@@ -17,6 +17,11 @@ spec:
 
     helm:
       values: |
+        service:
+          type: LoadBalancer
+          annotations:
+            metallb.universe.tf/address-pool: lan
+            external-dns.alpha.kubernetes.io/hostname: zigbee2mqtt.lan.
         mosquitto:
           config: |
             per_listener_settings true
