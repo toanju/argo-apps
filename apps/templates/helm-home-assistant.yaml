@@ -25,6 +25,7 @@ spec:
         nodeSelector:
           role: zigbee  # TODO align role to storage
         persistence:
+          enabled: true
           storageClassName: local-storage
           volumeName: ha
         ha:
