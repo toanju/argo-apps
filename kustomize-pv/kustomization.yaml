@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: default
 resources:
 - resources/pv-z2m.yaml
+- resources/pv-ha.yaml
