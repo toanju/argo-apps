@@ -8,3 +8,4 @@ resources:
 patchesStrategicMerge:
 - patches/argo-cd-cm.yaml
 - patches/argo-cd-service.yaml
+- patches/argo-cd-dex.yaml
