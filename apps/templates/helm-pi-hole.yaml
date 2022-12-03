@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: etcd
+  name: pi-hole
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: etcd
+    namespace: pi-hole
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 8.5.8
-    chart: etcd
+    repoURL: https://toanju.github.io/helm-charts/
+    targetRevision: 0.1.0
+    chart: pi-hole
 
     helm:
       values: |
@@ -21,28 +21,14 @@ spec:
           type: LoadBalancer
           annotations:
             metallb.universe.tf/address-pool: lan
-            external-dns.alpha.kubernetes.io/hostname: home-assistant.lan.
-        image:
-          registry: quay.io
-          repository: coreos/etcd
-          tag: v3.5.5
+            external-dns.alpha.kubernetes.io/hostname: pi-hole.lan.
         persistence:
-          enabled: false
-        customLivenessProbe:
-          exec:
-            command:
-              - /usr/local/bin/etcdctl
-              - endpoint
-              - health
-        customReadinessProbe:
-          exec:
-            command:
-              - /usr/local/bin/etcdctl
-              - endpoint
-              - health
-        startupProbe:
-          enabled: false
-
+          enabled: true
+          storageClassName: local-storage
+          volumeName: pihole
+        pihole:
+          env:
+            TZ: "Europe/Berlin"
   # Sync policy
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
