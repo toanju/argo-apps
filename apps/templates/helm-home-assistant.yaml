@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     repoURL: https://toanju.github.io/helm-charts/
-    targetRevision: 0.2.0
+    targetRevision: 0.3.1
     chart: home-assistant
 
     helm:
@@ -30,6 +30,8 @@ spec:
           enabled: true
           storageClassName: local-storage
           volumeName: ha
+        strategy:
+          type: Recreate
         ha:
           env:
             - name: TZ
