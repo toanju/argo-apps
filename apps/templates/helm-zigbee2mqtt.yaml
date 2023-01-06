@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     repoURL: https://toanju.github.io/helm-charts/
-    targetRevision: 0.3.1
+    targetRevision: 0.3.2
     chart: zigbee2mqtt
 
     helm:
